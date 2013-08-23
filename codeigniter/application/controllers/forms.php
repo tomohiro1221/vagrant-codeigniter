@@ -13,10 +13,12 @@ class Forms extends CI_Controller
     public function load_login_form()
     {
         $data['title'] = 'Log in Twitter';
+        $data['error_exists'] = FALSE;
 
         $this->load->view('templates/header', $data);
+        $this->load->view('html/promotion');
         $this->load->view('html/login_form', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('templates/footer');
     }
 
     public function login_try()
@@ -26,21 +28,21 @@ class Forms extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         
-        if ($this->form_validation->run() === FALSE) {
+        if ($this->form_validation->run() === FALSE || $this->login_validate() === FALSE) {
+            $data['error_exists'] = TRUE;
+            $data['error_description'] = "Username or password is incoreect.";
             $this->load->view('templates/header', $data);
+            $this->load->view('html/promotion');
             $this->load->view('html/login_form', $data);
-            $this->load->view('templates/footer', $data);
-        } else if ($this->login_validate()) {
-            $this->load->view('html/formsuccess', $data);
+            $this->load->view('templates/footer');
         } else {
-            $this->load->view('templates/header', $data);
-            $this->load->view('html/login_form', $data);
-            $this->load->view('templates/footer', $data);
+            $this->load->view('html/formsuccess');
         }
     }
 
     public function login_validate()
     {
+        // return TRUE if log in is successful
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
@@ -60,10 +62,12 @@ class Forms extends CI_Controller
     public function load_signup_form()
     {
         $data['title'] = 'Sign up for Twitter';
+        $data['error_exists'] = FALSE;
 
         $this->load->view('templates/header', $data);
+        $this->load->view('html/promotion');
         $this->load->view('html/signup_form', $data);
-        $this->load->view('templates/footer', $data);       
+        $this->load->view('templates/footer');       
     }
 
     public function signup_try()
@@ -76,13 +80,16 @@ class Forms extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[User.email]');
 
         if ($this->form_validation->run() === FALSE) {
+            $data['error_exists'] = TRUE;
+
             $this->load->view('templates/header', $data);
+            $this->load->view('html/promotion');
             $this->load->view('html/signup_form', $data);
-            $this->load->view('templates/footer', $data);           
+            $this->load->view('templates/footer');           
         } else {
             $this->user_model->register();
             $this->load->view('html/formsuccess');
         }
     }
-
 }
+?>
