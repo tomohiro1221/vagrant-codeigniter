@@ -12,7 +12,7 @@ class User_model extends CI_Model
 
         $data = array(
                 'name' => $this->input->post('username'),
-                'email' => $this->input->post('eamil'),
+                'email' => $this->input->post('email'),
                 'password' => $this->input->post('password'),
                 'created_at' => $current_time,
                 'updated_at' => $current_time

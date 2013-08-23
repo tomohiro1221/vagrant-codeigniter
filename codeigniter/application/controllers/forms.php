@@ -26,12 +26,16 @@ class Forms extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         
-        if ($this->form_validation->run() == FALSE) {
+        if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('html/login_form', $data);
             $this->load->view('templates/footer', $data);
-        } else {
+        } else if ($this->login_validate()) {
             $this->load->view('html/formsuccess', $data);
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('html/login_form', $data);
+            $this->load->view('templates/footer', $data);
         }
     }
 
@@ -40,7 +44,17 @@ class Forms extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-            
+        $this->db->select('name, password');
+        $this->db->from('User');
+        $this->db->where('name', $username);
+
+        $query = $this->db->query("SELECT `password` FROM `User` WHERE name = '".$username."';");
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $password == $row->password;
+        } else {
+            return FALSE;
+        }
     }
 
     public function load_signup_form()
@@ -56,10 +70,10 @@ class Forms extends CI_Controller
     {
         $data['title'] = 'Sign up for Twitter';
 
-        $this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[20]');
+        $this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[20]|is_unique[User.name]');
         $this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]');
         $this->form_validation->set_rules('passconf', 'Password確認', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[User.email]');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
