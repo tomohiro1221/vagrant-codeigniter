@@ -1,1 +1,1 @@
-You successfully logged in!
+You successfully logged in/signed up!
