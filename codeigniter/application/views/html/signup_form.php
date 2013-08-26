@@ -24,11 +24,13 @@
                 <input type="text" name="email" value="" size="20" />-->
                 <div class="container">
                     <div class="col-md-2 col-md-offset-4 col-xs-2 col-xs-offset-5">
-                        <button class="btn btn-warning form-button" type="submit" name="submit">Sign in</button>
+                        <button class="btn btn-warning form-button" type="submit" name="submit">Sign up</button>
                     </div>
                 </div>
                 </form>
                 <?php if($error_exists) echo '<div class="alert alert-danger form-error">'.$error_description.'</div>'; ?>
+                <!--<?php if($error_exists) echo '<div class="alert alert-danger form-error"></div>'; ?>  -->              
+                <!--<?php if($error_exists) echo validation_errors(); ?>-->
             </div>
         </div>
     </div>

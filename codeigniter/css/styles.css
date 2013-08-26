@@ -1,20 +1,47 @@
 body {
 	background-color: #edeff4;
 }
-/*.twitter-bird {
-	background: url("https://dev.twitter.com/sites/default/files/images_documentation/bird_gray_32.png");
+
+.twitter-bird {
+	background: url("img/bird_gray_32.png");
     background-repeat: no-repeat;
     position: absolute;
     top: 9px;
     width: 24px;
-}*/
+}
 
+.background-image{
+  height:300px;
+  background-size: 100%;
+  background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  background-image: url('https://dl.dropboxusercontent.com/u/2665617/bootstrap/images/image1.jpg');
+    }
+
+@media only screen and (max-width: 767px){
+.background-image {
+  height: 200px;
+}}
+
+h3 {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.form-signin-heading {
+	margin-bottom: 30px;
+}
 .form-control {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 .form-button {
 	width: 80px;
+	margin-bottom: 5px;
 }
 
 .form-error {
