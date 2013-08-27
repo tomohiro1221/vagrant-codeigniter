@@ -24,7 +24,6 @@
                 <img class="twitter-bird "alt="" src="https://dev.twitter.com/sites/default/files/images_documentation/bird_gray_32.png">              
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <!--<li><a href="<?php echo $link_address?>"><?php echo $link?></a></li>-->
                 <li><?php if ($username) echo '<a href="#">'.$username.'</a>' ?></li>
                 <li><?php echo '<a href="'.site_url($link_address).'">'.$link.'</a>' ?></li>
             </ul>
