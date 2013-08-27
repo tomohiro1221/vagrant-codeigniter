@@ -30,7 +30,7 @@ class User_model extends CI_Model
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $row = $query->row();
-            return $row->id;
+            return $row->$info;
         } else {
             return null;
         }
@@ -55,9 +55,9 @@ class User_model extends CI_Model
 
     public function get_password_from_username($name)
     {
-        return $this->get_user_information('name', $name);
-        /*
-        $this->db->select('password');
+        return $this->get_user_information('password', $name);
+        
+        /*$this->db->select('password');
         $this->db->from('User');
         $this->db->where('name', $name);
 
