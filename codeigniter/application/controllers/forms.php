@@ -30,11 +30,6 @@ class Forms extends CI_Controller
         $data['error_exists'] = false;
 
         $this->render(array('templates/promotion', 'html/login_form'), $data);
-
-        /*$this->load->view('templates/header', $data);
-        $this->load->view('templates/promotion');
-        $this->load->view('html/login_form', $data);
-        $this->load->view('templates/footer');*/
     }
 
     public function login_try()
@@ -47,25 +42,18 @@ class Forms extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         
-        // see -> config/form_validation for rules
+        // see config/form_validation for rules
         if ($this->form_validation->run() === false || $this->login_validate() === false) {
             $data['error_exists'] = true;
             $data['error_description'] = "Username or password is incoreect.";
 
             $this->render(array('templates/promotion', 'html/login_form'), $data);
-            /*$this->load->view('templates/header', $data);
-            $this->load->view('templates/promotion');
-            $this->load->view('html/login_form', $data);
-            $this->load->view('templates/footer');*/
         } else { // Log in success!
             $data['username'] = $this->input->post('username');
             $data['link'] = 'Log out';
             $data['link_address'] = 'forms/load_login_form';
 
             $this->render(array('html/user_home'), $data);
-            /*$this->load->view('templates/header', $data);
-            $this->load->view('html/user_home');
-            $this->load->view('templates/footer');*/
         }
     }
 
@@ -88,11 +76,7 @@ class Forms extends CI_Controller
         $data['username'] = null;
         $data['error_exists'] = false;
 
-        $this->render(array('templates/promotion', 'html/signup_form'), $data);
-        /*$this->load->view('templates/header', $data);
-        $this->load->view('templates/promotion');
-        $this->load->view('html/signup_form', $data);
-        $this->load->view('templates/footer'); */      
+        $this->render(array('templates/promotion', 'html/signup_form'), $data); 
     }
 
     public function signup_try()
@@ -109,11 +93,7 @@ class Forms extends CI_Controller
             $data['error_exists'] = true;
             $data['error_description'] = $this->error_description_for_signup();
 
-            $this->render(array('templates/promotion', 'html/signup_form'), $data);
-            /*$this->load->view('templates/header', $data);
-            $this->load->view('templates/promotion');
-            $this->load->view('html/signup_form', $data);
-            $this->load->view('templates/footer');   */        
+            $this->render(array('templates/promotion', 'html/signup_form'), $data);    
         } else {
             $this->user_model->register();
 
@@ -122,14 +102,13 @@ class Forms extends CI_Controller
             $data['link_address'] = 'forms/load_login_form';
 
             $this->render(array('html/user_home'), $data);
-            //$this->load->view('html/formsuccess');
         }
     }
 
     public function error_description_for_signup()
     {
         // get the most relevant error
-        if (form_error('email')) $erorr = 'That does not look like a valid email address.';
+        if (form_error('email')) $error = 'That does not look like a valid email address.';
         if (form_error('passconf') || form_error('password')) $error = 'Oops, Password does not match.'; 
         if (form_error('username')) $error = 'That username is too short/long or has already taken.';
 
