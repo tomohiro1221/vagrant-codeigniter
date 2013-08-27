@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="<?php echo $link_address?>"><?php echo $link?></a></li>-->
                 <li><?php if ($username) echo '<a href="#">'.$username.'</a>' ?></li>
-                <li><?php echo '<a href="'.$link_address.'">'.$link.'</a>' ?></li>
+                <li><?php echo '<a href="'.site_url($link_address).'">'.$link.'</a>' ?></li>
             </ul>
         </div>
     </div>

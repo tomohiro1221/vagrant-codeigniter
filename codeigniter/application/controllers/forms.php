@@ -23,11 +23,11 @@ class Forms extends CI_Controller
     public function load_login_form()
     {
         $data['title'] = 'Log in Twitter';
-        $data['username'] = NULL;
+        $data['username'] = null;
         $data['link'] = 'Sign up now!';
-        $data['link_address'] = '../forms/load_signup_form';
+        $data['link_address'] = 'forms/load_signup_form';
 
-        $data['error_exists'] = FALSE;
+        $data['error_exists'] = false;
 
         $this->render(array('templates/promotion', 'html/login_form'), $data);
 
@@ -42,7 +42,7 @@ class Forms extends CI_Controller
         $data['title'] = 'Log in Twitter';
         $data['username'] = null;
         $data['link'] = 'Sign up now!';
-        $data['link_address'] = '../forms/load_signup_form';
+        $data['link_address'] = 'forms/load_signup_form';
 
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -60,7 +60,7 @@ class Forms extends CI_Controller
         } else { // Log in success!
             $data['username'] = $this->input->post('username');
             $data['link'] = 'Log out';
-            $data['link_address'] = '#';
+            $data['link_address'] = 'forms/load_login_form';
 
             $this->render(array('html/user_home'), $data);
             /*$this->load->view('templates/header', $data);
@@ -84,7 +84,7 @@ class Forms extends CI_Controller
         $data['title'] = 'Sign up for Twitter';
 
         $data['link'] = 'Log in now!';
-        $data['link_address'] = '../forms/load_login_form';
+        $data['link_address'] = 'forms/load_login_form';
         $data['username'] = null;
         $data['error_exists'] = false;
 
@@ -104,7 +104,7 @@ class Forms extends CI_Controller
             $data['title'] = 'Sign up for Twitter';
             $data['username'] = null;
             $data['link'] = 'Log in now!';
-            $data['link_address'] = '../forms/load_login_form';            
+            $data['link_address'] = 'forms/load_login_form';            
 
             $data['error_exists'] = true;
             $data['error_description'] = $this->error_description_for_signup();
@@ -119,9 +119,10 @@ class Forms extends CI_Controller
 
             $data['username'] = $this->input->post('username');
             $data['link'] = 'Log out';
-            $data['link_address'] = '#';
+            $data['link_address'] = 'forms/load_login_form';
 
-            $this->load->view('html/formsuccess');
+            $this->render(array('html/user_home'), $data);
+            //$this->load->view('html/formsuccess');
         }
     }
 
