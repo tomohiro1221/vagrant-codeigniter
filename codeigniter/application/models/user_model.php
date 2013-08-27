@@ -21,8 +21,25 @@ class User_model extends CI_Model
         return $this->db->insert('User', $data);
     }
 
+    public function get_user_information($info, $name)
+    {
+        $this->db->select($info);
+        $this->db->from('User');
+        $this->db->where('name', $name);
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->id;
+        } else {
+            return null;
+        }
+    }
+
     public function get_id_from_username($name)
     {
+        return $this->get_user_information('id', $name);
+        /*
         $this->db->select('id');
         $this->db->from('User');
         $this->db->where('name', $name);
@@ -32,12 +49,14 @@ class User_model extends CI_Model
             $row = $query->row();
             return $row->id;
         } else {
-            return NULL;
-        }
+            return null;
+        }*/
     }
 
     public function get_password_from_username($name)
     {
+        return $this->get_user_information('name', $name);
+        /*
         $this->db->select('password');
         $this->db->from('User');
         $this->db->where('name', $name);
@@ -47,8 +66,8 @@ class User_model extends CI_Model
             $row = $query->row();
             return $row->password;
         } else {
-            return NULL;
-        }
+            return null;
+        }*/
     }
 
     public function post_tweet()
