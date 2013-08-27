@@ -18,14 +18,14 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="twitter-bird"></span>
-            </button>-->
-            <div class="navbar-header">                
-                <a class="navbar-brand">・twitter・</a>
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+            <!--</button>-->
+            <div class="navbar-header">
+                <img class="twitter-bird "alt="" src="https://dev.twitter.com/sites/default/files/images_documentation/bird_gray_32.png">              
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="<?php echo $link_address?>"><?php echo $link?></a></li>-->
+                <li><?php if ($username) echo '<a href="#">'.$username.'</a>' ?></li>
                 <li><?php echo '<a href="'.$link_address.'">'.$link.'</a>' ?></li>
             </ul>
         </div>

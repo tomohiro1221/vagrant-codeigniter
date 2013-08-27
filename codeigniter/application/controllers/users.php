@@ -21,5 +21,6 @@ class Users extends CI_Controller
 	public function tweet()
 	{
 		$this->user_model->post_tweet();
+		
 	}
 }
