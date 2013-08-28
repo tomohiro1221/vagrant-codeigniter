@@ -21,7 +21,7 @@ $config = array(
                         array(
                             'field' => 'password',
                             'label' => 'required',
-                            'rules' => 'required'
+                            'rules' => 'required|min_length[6]'
                             ),
                         array(
                             'field' => 'passconf',
