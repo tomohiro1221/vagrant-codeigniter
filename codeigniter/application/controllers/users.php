@@ -45,9 +45,6 @@ class Users extends MY_Controller
 	public function load_older_tweets()
 	{
 		$this->tweet_model->get_tweets($this->session->userdata('username'), 10, $this->input->post('tweets'));
-		//$this->tweet_model->get_tweets();
 	}
-
-
 }
 ?>
