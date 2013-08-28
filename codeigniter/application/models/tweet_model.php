@@ -37,7 +37,7 @@ class Tweet_model extends CI_Model
         $this->post_tweet($username, $content, $current_time);
         $this->output_json(array('username' => $username,
                                             'content' => $content,
-                                            'posted_time' => $posted_time));
+                                            'posted_time' => $current_time));
     }
 
     public function post_tweet($username, $content, $current_time)
