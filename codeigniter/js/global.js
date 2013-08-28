@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var tweets = 0;
-	$.post('/users/load_latest_tweets', {}, function(data) {
+	$.get('/users/load_latest_tweets', {}, function(data) {
 		if (data) {
 			$.each(data, function(index, tweet_data) {
 				append_new_tweet(parse_tweet(tweet_data));
@@ -11,12 +11,13 @@ $(document).ready(function() {
 	$('#tweet-button').click(function(event) {
 		event.preventDefault();
 		var content = $('#tweet-box').val();
-		post(content);
+        var csrf_test_key = $('input[name="csrf_test_name"]').val();
+		post(content, csrf_test_key);
 	});
 
 	$('#load-more-tweets').click(function(event) {
 		event.preventDefault();
-		$.post('/users/load_older_tweets', {'tweets': tweets}, function(data) {
+		$.get('/users/load_older_tweets', {'tweets': tweets}, function(data) {
 			if (data) {
 				data.reverse();
 				$.each(data, function(index, tweet_data) {
@@ -26,9 +27,9 @@ $(document).ready(function() {
 		});
 	});
 
-	function post(content) {
+	function post(content, csrf_test_key) {
 		$('#tweet-box').val('');
-		$.post('/users/tweet', {'content': content}, function(data) {
+		$.post('/users/tweet', {'content': content, 'csrf_test_name': csrf_test_key}, function(data) {
 			if (data) {
 				//$('#tweet-list-top').after(parse_tweet(data));
 				append_new_tweet(parse_tweet(data));

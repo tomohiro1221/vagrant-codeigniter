@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col-md-4 col-md-offset-1 wrapper">
-            <form>
+            <?php echo form_open() ?>
                 <textarea id="tweet-box" rows="2" name="content"></textarea>
                 <button id="tweet-button" class="btn btn-warning" type="submit" name="submit">Tweet</button>
             </form>
@@ -26,7 +26,7 @@
                         <div class="tweeted-time">8/13</div><hr>
                     </li>-->
                     <li id="tweet-list-bottom">
-                        <form>
+                        <?php echo form_open() ?>
                             <span id="load-more-tweets">Load more tweets</span>
                         </form>
                     </li>

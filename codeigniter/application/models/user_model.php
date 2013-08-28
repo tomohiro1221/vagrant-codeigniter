@@ -45,16 +45,4 @@ class User_model extends CI_Model
     {
         return $this->get_user_information('password', $name);
     }
-
-
-    public function load_more_old_tweets()
-    {
-
-    }
-
-    public function load_new_tweets()
-    {
-
-    }
 }
-?>
