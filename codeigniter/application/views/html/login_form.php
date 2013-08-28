@@ -3,7 +3,7 @@
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <?php echo form_open('forms/login_try') ?>
 
-                <input type="text" class="form-control" name="username" value="" placeholder="Username" autofocus="">
+                <input type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>" placeholder="Username" autofocus="">
                 <input type="password" class="form-control" name="password" value="" placeholder="Password">
                 
                 <!--<h5>Username</h5>

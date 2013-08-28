@@ -3,10 +3,10 @@
             <h2 class="form-signin-heading">Please sign up</h2>
             <?php echo form_open('forms/signup_try') ?>
 
-            <input type="text" class="form-control" name="username" value="" placeholder="Username" autofocus="" />
-            <input type="password" class="form-control" name="password" value="" placeholder="Password" />
-            <input type="password" class="form-control" name="passconf" value="" placeholder="Password Again" />
-            <input type="text" class="form-control" name="email" value="" placeholder="Your Email" />       
+            <input type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>" placeholder="Username" autofocus="" />
+            <input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" placeholder="Password" />
+            <input type="password" class="form-control" name="passconf" value="<?php echo set_value('passconf'); ?>" placeholder="Password Again" />
+            <input type="text" class="form-control" name="email" value="<?php echo set_value('email'); ?>" placeholder="Your Email" />       
                 <!--<h5>Username</h5>
                 <?php echo form_error('username'); ?>
                 <input type="text" name="username" value="" size="20" />

@@ -31,7 +31,7 @@ body {
   height: 200px;
 }}
 
-h3 {
+h3.promotion {
 	margin-top: 30px;
 	margin-bottom: 20px;
 }
@@ -53,20 +53,91 @@ h3 {
 	margin-top: 5px;
 }
 
-.hidden-username {
-    display: none;
+.user-home {
+    border-radius: 10px;
+    background-color: #666666;
+}
+
+.profile-sidebar {
+    border: 3px solid #cccccc;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    margin-top: 80px;
+    border-radius: 5px 5px 5px 5px;
+    /*position: fixed;*/
+}
+
+.profile-img {
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+.profile-info {
+    list-style-type:none;
+    padding-left: 10px;
+}
+
+.profile-info-detail {
+    padding-left: 15px;
 }
 
 #tweet-box {
-    width: 600px;
-    height: 100px;
+    width: 400px;
+    height: 65px;
     border: 3px solid #cccccc;
     padding: 5px;
+    border-radius: 5px 5px 5px 5px;
 }
 
-.tweet-button {
-    margin-left: 530px;
+.tweet-list {
+    list-style-type:none;
+    padding-left: 10px;
+}
+
+.tweet {
+    line-height: 14px;
+    padding-left: 5px;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.tweet-content {
+    padding-left: 5px;
+}
+
+.tweeted-time {
+    color: #555555;
+    font-size: 10px;
+    padding-right: 10px;
+    text-align: right;
+    text-decoration: none;
+}
+
+#tweet-button {
+    margin-left: 335px;
     margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#tweet-column {
+    width: 400px;
+    margin-bottom: 30px;
+    background-color: white;
+    border: 3px solid #cccccc;
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#tweet-list-bottom {
+    text-align: center;
+    color: #aaaaaa;
+    font-size: 10px;
+}
+
+#load-more-tweets {
+    text-decoration: none;
 }
 
 #footer {

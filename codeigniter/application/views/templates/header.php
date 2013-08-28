@@ -9,11 +9,7 @@
         <link href="/css/bootstrap-theme.min.css" rel="stylesheet"/>
         <link href="/css/styles.css" rel="stylesheet"/>
 
-        <title><?php echo $title ?> -CodeIgniter 2 Tutorial</title>
-
-        <script src="js/jquery-1.10.2.js"></script>
-        <script src="js/bootstrap.js"></script>
-
+        <title><?php echo $title ?></title>
     </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

@@ -1,15 +1,37 @@
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 wrapper">
-        <?php echo form_open('users/tweet') ?>
-        <!--<div class="row">-->
-            <textarea id="tweet-box" rows="3" name="content"></textarea>
-            <input type="text" class="hidden-username" name="username" value="<?php echo $username ?>" />
-        <!--</div>-->
-        <!--<div class="container">-->
-            <!--<div class="col-md-2 col-md-offset-10">-->
-            <button class="btn btn-warning tweet-button" type="submit" name="submit">Tweet</button>
-            <!--</div>-->
-        <!--</div>-->
-        </form>
+<div class="container user-home">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+            <div class="profile-sidebar">
+                <img src="/img/hitsugaya.jpg" alt="hitsugaya" class="img-circle profile-img">
+                <?php if ($username) echo $username ?><hr>
+                <ul class="profile-info">
+                    <li><strong>Bio</strong></li>
+                    <li class="profile-info-detail">Hitsugaya-kun / Birthdate: December 20th / Rank: Captain of Squad 10 / Daiguren Hyorinmaru!</li>
+                    <li><strong>Location</strong></li>
+                    <li class="profile-info-detail">BLEACH / Soul Society</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1 wrapper">
+            <form>
+                <textarea id="tweet-box" rows="2" name="content"></textarea>
+                <button id="tweet-button" class="btn btn-warning" type="submit" name="submit">Tweet</button>
+            </form>
+            <div id="tweet-column">
+                <ul class="tweet-list">
+                    <li id="tweet-list-top"><h4>Tweets</h4><hr></li>
+                    <!--<li class="tweet">
+                        <strong>realhacker</strong>&nbsp;tweeted<br/>
+                        &gt;&gt;&gt;<span class="tweet-content">hello world I'm twweeitn form user_home. I need a long tweet to see if this is working correctly. </span>
+                        <div class="tweeted-time">8/13</div><hr>
+                    </li>-->
+                    <form>
+                        <li id="tweet-list-bottom">
+                            <span id="load-more-tweets">Load more tweets</span>
+                        </li>
+                    </form>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
