@@ -8,9 +8,7 @@ class Tweet_model extends CI_Model
         $this->load->model('user_model');
     }
 
-
-
-    public function get_tweets($username, $n)
+    public function get_tweets($username, $limit, $offset)
     {
         // return n tweets
         $user_id = $this->user_model->get_id_from_username($username);
@@ -19,7 +17,7 @@ class Tweet_model extends CI_Model
         $this->db->where('user_id', $user_id);
         
         $this->db->order_by("created_at", "asc");
-        $this->db->limit($n);
+        $this->db->limit($limit, $offset);
         
         $query = $this->db->get();
 
@@ -31,38 +29,6 @@ class Tweet_model extends CI_Model
         $this->output_json($data);
     }
 
-    public function fetch_latest_tweets($username, $n)
-    {
-        $user_id = $this->user_model->get_id_from_username($username);
-
-        $this->db->from('Tweet');
-        $this->db->where('user_id', $user_id);
-        
-        $this->db->order_by("created_at", "asc");
-        $this->db->limit($n);
-        
-        $query = $this->db->get();
-
-        $data = array();
-        foreach ($query->result() as $row) {
-            array_push($data, array('username' => $username, 'content' => $row->content, 'posted_time' => $row->created_at));
-        }
-
-        $this->output_json($data);
-    }
-
-    /*public function fetch_older_tweets($username, $n)
-    {
-        $user_id = $this->user_model->get_id_from_username($username);
-
-        $this->db->from('Tweet');
-        $this->db->where('user_id', $user_id);
-        
-        $this->db->order_by("created_at", "asc");
-        $this->db->limit($n);
-
-        $this->db->wh
-    }*/
 
     public function process_new_tweet($username, $content)
     {

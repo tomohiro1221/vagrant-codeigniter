@@ -25,11 +25,11 @@
                         &gt;&gt;&gt;<span class="tweet-content">hello world I'm twweeitn form user_home. I need a long tweet to see if this is working correctly. </span>
                         <div class="tweeted-time">8/13</div><hr>
                     </li>-->
-                    <form>
-                        <li id="tweet-list-bottom">
+                    <li id="tweet-list-bottom">
+                        <form>
                             <span id="load-more-tweets">Load more tweets</span>
-                        </li>
-                    </form>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
