@@ -104,12 +104,12 @@ class Forms extends MY_Controller
     private function _login($username)
     {
         $user_data = array(
+                     'user_id' => $this->user_model->get_id_from_username($username),
                      'username' => $username,
-                     'logged_in' => true
+                     //'logged_in' => true
                      );
         
         $this->session->set_userdata($user_data);
         redirect('users/home');
     }
 }
-?>

@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$.get('/users/load_latest_tweets', {}, function(data) {
 		if (data) {
 			$.each(data, function(index, tweet_data) {
-				append_new_tweet(parse_tweet(tweet_data));
+				append_tweet(parse_tweet(tweet_data));
 			});
 		}
 	});
@@ -11,15 +11,17 @@ $(document).ready(function() {
 	$('#tweet-button').click(function(event) {
 		event.preventDefault();
 		var content = $('#tweet-box').val();
-        var csrf_test_key = $('input[name="csrf_test_name"]').val();
-		post(content, csrf_test_key);
+		if (content) { // doesn't allow the post of empty tweet
+            var csrf_test_key = $('input[name="csrf_test_name"]').val();
+        	post(content, csrf_test_key);
+		}
 	});
 
 	$('#load-more-tweets').click(function(event) {
 		event.preventDefault();
 		$.get('/users/load_older_tweets', {'tweets': tweets}, function(data) {
 			if (data) {
-				data.reverse();
+				//data.reverse();
 				$.each(data, function(index, tweet_data) {
 					show_old_tweet(parse_tweet(tweet_data));
 				});
@@ -37,6 +39,11 @@ $(document).ready(function() {
 		}, "json");
 	}
 
+    function append_tweet(tweet) {
+        tweets += 1;
+        $('#tweet-list-bottom').before(tweet);
+    }
+
 	function append_new_tweet(new_tweet) {
 		tweets += 1;
 		$('#tweet-list-top').after(new_tweet);
@@ -48,7 +55,7 @@ $(document).ready(function() {
 	}
 
 	function parse_tweet(data) {
-		return '<li class="tweet"><strong>' + data.username + '</strong>&nbsp;tweeted<br/>&gt;&gt;&gt;<span class="tweet-content">' + data.content + '</span><div class="tweeted-time">' + data.posted_time + '</div><hr></li>';
+		return '<li class="tweet"><strong>' + data.username + '</strong>&nbsp;tweeted<br/>&gt;&gt;&gt;<span class="tweet-content">' + data.content.replace(/\n/g, '<br />') + '</span><div class="tweeted-time">' + data.posted_time + '</div><hr></li>';
 	}
 
 	$('#load-more-tweets').mouseenter(function() {

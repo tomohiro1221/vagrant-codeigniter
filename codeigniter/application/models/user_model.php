@@ -21,6 +21,31 @@ class User_model extends CI_Model
         return $this->db->insert('User', $data);
     }
 
+    public function get_user_information_from_id($info, $id)
+    {
+        $this->db->select($info);
+        $this->db->from('User');
+        $this->db->where('id', $id);
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->$info;
+        } else {
+            return null;
+        }
+    }
+
+    public function get_username_from_id($id)
+    {
+        return $this->get_user_information_from_id('name', $id);
+    }
+
+    public function get_password_from_id($id)
+    {
+        return $this->get_user_information_from_id('password');
+    }
+
     public function get_user_information($info, $name)
     {
         $this->db->select($info);
